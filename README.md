@@ -2,7 +2,9 @@
 
 - App 基本架构 MVC MVP MVVM等等
 - 日志库 [Logger](https://github.com/orhanobut/logger)
-- 网络架构：网络库 [OKHttp](https://github.com/square/okhttp) RxJava Retrofit
+- 网络架构：网络库 [OKHttp](https://github.com/square/okhttp) 
+- RxJava 
+- Retrofit
 - Crash收集 [Bugly](https://bugly.qq.com/v2/)
 - 辅助工具库
 - 事件传递： EventBus等

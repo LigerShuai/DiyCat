@@ -8,7 +8,7 @@
 - Crash收集 [Bugly](https://bugly.qq.com/v2/)
 - 辅助工具库
 - 事件传递： EventBus[EventBus](https://github.com/greenrobot/EventBus)
-- 图片 Glide
+- 图片 Glide [Glide](https://github.com/bumptech/glide)
 - json解析：Gson，FastJson
 - 扫一扫
 - 消息中心：消息的push和通知。信鸽等

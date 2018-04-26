@@ -3,11 +3,11 @@
 - App 基本架构 MVC MVP MVVM等等
 - 日志库 [Logger](https://github.com/orhanobut/logger)
 - 网络架构：网络库 [OKHttp](https://github.com/square/okhttp) 
-- RxJava 
-- Retrofit
+- RxJava [RxJava](https://github.com/ReactiveX/RxJava)
+- Retrofit [Retrofit](http://square.github.io/retrofit/)
 - Crash收集 [Bugly](https://bugly.qq.com/v2/)
 - 辅助工具库
-- 事件传递： EventBus等
+- 事件传递： EventBus[EventBus](https://github.com/greenrobot/EventBus)
 - 图片 Glide
 - json解析：Gson，FastJson
 - 扫一扫

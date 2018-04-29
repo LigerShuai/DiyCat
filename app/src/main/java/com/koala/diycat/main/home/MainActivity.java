@@ -39,7 +39,8 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     @Override
     protected void initView() {
         mTitles = new String[]{"主页", "动态", "发现", "设置"};
-        mTabIcons = new int[]{R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+        mTabIcons = new int[]{R.drawable.icon_home_selector, R.drawable.icon_dynamic_selector,
+                R.drawable.icon_discovery_selector, R.drawable.icon_mine_selector};
         List<Fragment> fragments = new ArrayList<>();
 
         fragments.add(new HomeFragment());

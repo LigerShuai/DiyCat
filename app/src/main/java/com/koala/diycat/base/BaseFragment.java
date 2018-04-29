@@ -1,5 +1,6 @@
 package com.koala.diycat.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -22,6 +23,7 @@ public abstract class BaseFragment extends Fragment {
 
     private View mRootView;
     private Unbinder mUnbinder;
+    protected Context mContext;
 
     @Nullable
     @Override
@@ -29,6 +31,12 @@ public abstract class BaseFragment extends Fragment {
         mRootView = inflater.inflate(getContentViewId(), container, false);
         mUnbinder = ButterKnife.bind(this,mRootView);
         return mRootView;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = context;
     }
 
     @Override
@@ -70,14 +78,13 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-
+        if (mUnbinder != null) {
+            mUnbinder.unbind();
+        }
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (mUnbinder != null) {
-            mUnbinder.unbind();
-        }
     }
 }

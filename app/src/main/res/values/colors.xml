@@ -145,7 +145,7 @@
     <color name="darkviolet">#9400d3</color><!--暗紫罗兰色 -->
     <color name="mediumorchid">#ba55d3</color><!--中粉紫色 -->
 
-    <color name="green_icon_bottom">#26A69A</color> <!--底部导航栏颜色-->
-    <color name="grey_icon_bottom">#8a8a8a</color> <!--底部导航栏颜色-->
+    <color name="tab_tv_color_normal">#8a8a8a</color> <!--底部导航栏字体颜色-->
+    <color name="tab_tv_color_pressed">#26A69A</color> <!--底部导航栏字体颜色-->
 
 </resources>

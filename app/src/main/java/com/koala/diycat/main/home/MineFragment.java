@@ -7,7 +7,7 @@ import com.koala.diycat.base.BaseFragment;
  * @author Liger
  * @date 2018/4/29 00:48
  */
-public class SettingFragment extends BaseFragment {
+public class MineFragment extends BaseFragment {
     @Override
     protected void initView() {
 
@@ -25,7 +25,7 @@ public class SettingFragment extends BaseFragment {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.fragment_setting;
+        return R.layout.fragment_mine;
     }
 
 }

@@ -21,7 +21,6 @@ import butterknife.ButterKnife;
 /**
  * @author Liger
  * @date 2018/4/26 上午1:00
- *
  * 主页
  */
 
@@ -33,20 +32,20 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     TabLayout mTabLayout;
 
     private ViewPagerAdapter mAdapter;
-    private String[] mTitles;
+    private int[] mTitles;
     private int[] mTabIcons;
 
     @Override
     protected void initView() {
-        mTitles = new String[]{"主页", "动态", "发现", "设置"};
-        mTabIcons = new int[]{R.drawable.icon_home_selector, R.drawable.icon_dynamic_selector,
-                R.drawable.icon_discovery_selector, R.drawable.icon_mine_selector};
-        List<Fragment> fragments = new ArrayList<>();
+        mTitles = new int[]{R.string.home, R.string.dynamic, R.string.discovery, R.string.mine};
+        mTabIcons = new int[]{R.drawable.home_tab_iv_selector, R.drawable.dynamic_tab_iv_selector,
+                R.drawable.discovery_tab_iv_selector, R.drawable.mine_tab_iv_selector};
 
+        List<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
         fragments.add(new DynamicFragment());
         fragments.add(new DiscoveryFragment());
-        fragments.add(new SettingFragment());
+        fragments.add(new MineFragment());
         mAdapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setScrollable(true);
         mViewPager.setAdapter(mAdapter);
@@ -76,10 +75,10 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     }
 
     private View getTabView(int position) {
-        View view = LayoutInflater.from(this).inflate(R.layout.view_tab, null);
+        View view = LayoutInflater.from(this).inflate(R.layout.tab_layout_item, null);
         TabViewHolder viewHolder = new TabViewHolder(view);
         viewHolder.tabIv.setImageResource(mTabIcons[position]);
-        viewHolder.tabTv.setText(mTitles[position]);
+        viewHolder.tabTv.setText(getString(mTitles[position]));
         return view;
     }
 

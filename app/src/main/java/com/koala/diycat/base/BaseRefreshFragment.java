@@ -21,9 +21,9 @@ import butterknife.BindView;
 public abstract class BaseRefreshFragment extends BaseFragment implements OnRefreshListener, OnLoadMoreListener {
 
     @BindView(R.id.fragment_base_refresh_rv)
-    RecyclerView mRv;
+    protected RecyclerView mRecyclerView;
     @BindView(R.id.refreshLayout)
-    SmartRefreshLayout mRefreshLayout;
+    protected SmartRefreshLayout mRefreshLayout;
 
     @CallSuper
     @Override

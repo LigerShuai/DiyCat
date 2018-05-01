@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.koala.diycat.R;
-import com.koala.diycat.model.HomeData;
+import com.koala.diycat.model.test.HomeData;
 
 import java.util.List;
 

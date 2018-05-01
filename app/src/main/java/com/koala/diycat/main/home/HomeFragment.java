@@ -4,7 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.koala.diycat.base.BaseRefreshFragment;
 import com.koala.diycat.main.adapter.HomeAdapter;
-import com.koala.diycat.model.HomeData;
+import com.koala.diycat.model.test.HomeData;
 
 import java.util.ArrayList;
 import java.util.List;

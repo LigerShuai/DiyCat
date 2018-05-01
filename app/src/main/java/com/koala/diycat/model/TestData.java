@@ -4,7 +4,7 @@ package com.koala.diycat.model;
  * @author Liger
  * @date 2018/4/30 18:29
  */
-public class HomeData {
+public class TestData {
 
     private String msg;
 

@@ -1,16 +1,16 @@
 package com.koala.diycat.main.home;
 
-import com.koala.diycat.R;
-import com.koala.diycat.base.BaseFragment;
+import com.koala.diycat.base.BaseRefreshFragment;
 
 /**
  * @author Liger
  * @date 2018/4/29 00:48
  */
-public class DiscoveryFragment extends BaseFragment {
+public class DiscoveryFragment extends BaseRefreshFragment {
+
     @Override
     protected void initView() {
-
+        super.initView();
     }
 
     @Override
@@ -23,8 +23,4 @@ public class DiscoveryFragment extends BaseFragment {
 
     }
 
-    @Override
-    protected int getContentViewId() {
-        return R.layout.fragment_discovery;
-    }
 }

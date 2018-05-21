@@ -6,6 +6,6 @@ package com.koala.diycat.api;
  */
 public class UriConstant {
 
-    public static final String BASE_URL = "http://baobab.kaiyanapp.com/api/v4/tabs/selected";
+    public static final String BASE_URL = "http://baobab.kaiyanapp.com/api/v4/";
 //    public static final String BASE_URL = "http://baobab.kaiyanapp.com/api/";
 }

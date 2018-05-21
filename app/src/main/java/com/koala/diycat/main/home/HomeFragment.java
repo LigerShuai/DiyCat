@@ -1,10 +1,9 @@
 package com.koala.diycat.main.home;
 
 import android.support.v7.widget.LinearLayoutManager;
-
 import com.koala.diycat.base.BaseRefreshFragment;
 import com.koala.diycat.main.adapter.HomeAdapter;
-import com.koala.diycat.model.test.HomeData;
+import com.koala.diycat.model.TestData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,14 +29,13 @@ public class HomeFragment extends BaseRefreshFragment {
 
     @Override
     protected void initData() {
-
     }
 
-    private List<HomeData> getData() {
-        List<HomeData> list = new ArrayList<>();
-        HomeData data;
+    private List<TestData> getData() {
+        List<TestData> list = new ArrayList<>();
+        TestData data;
         for (int i = 0; i < 20; i++) {
-            data = new HomeData();
+            data = new TestData();
             data.setMsg("shuai" + i);
             list.add(data);
         }

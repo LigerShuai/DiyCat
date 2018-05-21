@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.util.Log;
 
+import com.tencent.bugly.Bugly;
+import com.tencent.bugly.crashreport.CrashReport;
+
 /**
  * @author Liger
  * @date 2018/4/28 23:52
@@ -19,6 +22,9 @@ public class BaseApp extends Application {
     public void onCreate() {
         super.onCreate();
         sContext = getApplicationContext();
+        Bugly.init(getApplicationContext(), "bbd0f149c2", true);
+
+
     }
 
     public static Context getContext() {

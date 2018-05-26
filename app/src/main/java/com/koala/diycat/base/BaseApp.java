@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.util.Log;
 
+import com.koala.diycat.constants.WeiboConstants;
+import com.sina.weibo.sdk.WbSdk;
+import com.sina.weibo.sdk.auth.AuthInfo;
 import com.tencent.bugly.Bugly;
-import com.tencent.bugly.crashreport.CrashReport;
 
 /**
  * @author Liger
@@ -23,8 +25,7 @@ public class BaseApp extends Application {
         super.onCreate();
         sContext = getApplicationContext();
         Bugly.init(getApplicationContext(), "bbd0f149c2", true);
-
-
+        WbSdk.install(this, new AuthInfo(this, WeiboConstants.APP_KEY, WeiboConstants.REDIRECT_URL, WeiboConstants.SCOPE));
     }
 
     public static Context getContext() {

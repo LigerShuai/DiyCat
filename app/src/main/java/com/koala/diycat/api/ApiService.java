@@ -1,6 +1,6 @@
 package com.koala.diycat.api;
 
-import com.koala.diycat.model.TestData;
+import com.koala.diycat.model.PublicTimeLine;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -18,7 +18,8 @@ public interface ApiService {
      *
      * @return
      */
-    @GET("tabs/selected")
-    Call<TestData> getHomePage();
+    @GET("statuses/public_timeline.json?access_token=2.00a84ggCeURfzC13e87045d2ilFJiD")
+    Call<PublicTimeLine> getHomePage();
+
 
 }

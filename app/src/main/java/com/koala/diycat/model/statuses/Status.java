@@ -3,7 +3,7 @@ package com.koala.diycat.model.statuses;
 import java.util.List;
 
 /**
- * 时间线状态
+ * 时间线状态(微博)
  *
  * @author Liger
  * @date 2018/5/27 18:06

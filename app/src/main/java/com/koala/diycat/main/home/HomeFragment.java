@@ -7,6 +7,7 @@ import android.util.Log;
 import com.koala.diycat.api.ApiService;
 import com.koala.diycat.base.BaseRefreshFragment;
 import com.koala.diycat.main.adapter.HomeAdapter;
+import com.koala.diycat.model.statuses.Status;
 import com.koala.diycat.model.statuses.TimeLine;
 import com.koala.diycat.network.NetManager;
 
@@ -24,7 +25,8 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class HomeFragment extends BaseRefreshFragment {
 
-    private List<String> mDatas;
+    //    private List<String> mDatas;
+    private List<Status> mDatas;
     private HomeAdapter mAdapter;
 
     @Override
@@ -39,7 +41,10 @@ public class HomeFragment extends BaseRefreshFragment {
     @SuppressLint("CheckResult")
     @Override
     protected void initData() {
+        getPublicTimeLine();
+    }
 
+    private void getPublicTimeLine() {
         NetManager.getInstance().retrofit().create(ApiService.class).getPublicTimeLine()
                 //在 io 线程请求网络
                 .subscribeOn(Schedulers.io())
@@ -63,11 +68,9 @@ public class HomeFragment extends BaseRefreshFragment {
                      */
                     @Override
                     public void onNext(TimeLine timeLine) {
-                        for (int i = 0; i < timeLine.getStatuses().size(); i++) {
-                            mDatas.add(timeLine.getStatuses().get(i).getUser().getName());
-                        }
+                        Log.d("liger", "onNext: " + timeLine);
+                        mDatas.addAll(timeLine.getStatuses());
                         mAdapter.notifyDataSetChanged();
-                        Log.d("liger", "onNext: ");
                     }
 
                     /**

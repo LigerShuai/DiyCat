@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/item_timeline_padding"
+    android:paddingLeft="@dimen/item_timeline_padding"
+    android:paddingRight="@dimen/item_timeline_padding">
+
+    <include layout="@layout/fragment_home_rv_item_timeline_head" />
+
+    <TextView
+        android:id="@+id/item_timeline_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="大学同学的婚礼..."
+        android:textSize="@dimen/item_timeline_content_size" />
+
+</LinearLayout>

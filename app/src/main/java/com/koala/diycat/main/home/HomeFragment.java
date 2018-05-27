@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 
 import com.koala.diycat.api.ApiService;
+import com.koala.diycat.api.Uri;
 import com.koala.diycat.base.BaseRefreshFragment;
 import com.koala.diycat.main.adapter.HomeAdapter;
 import com.koala.diycat.model.statuses.Status;
@@ -12,7 +13,9 @@ import com.koala.diycat.model.statuses.TimeLine;
 import com.koala.diycat.network.NetManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -25,7 +28,6 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class HomeFragment extends BaseRefreshFragment {
 
-    //    private List<String> mDatas;
     private List<Status> mDatas;
     private HomeAdapter mAdapter;
 
@@ -41,11 +43,13 @@ public class HomeFragment extends BaseRefreshFragment {
     @SuppressLint("CheckResult")
     @Override
     protected void initData() {
-        getPublicTimeLine();
+        getHomeTimeLine();
     }
 
-    private void getPublicTimeLine() {
-        NetManager.getInstance().retrofit().create(ApiService.class).getPublicTimeLine()
+    private void getHomeTimeLine() {
+        Map<String, Integer> map = new HashMap<>(1);
+        map.put(Uri.PAGE, 2);
+        NetManager.getInstance().retrofit().create(ApiService.class).getHomeTimeLine(map)
                 //在 io 线程请求网络
                 .subscribeOn(Schedulers.io())
                 //回到主线程处理请求结果

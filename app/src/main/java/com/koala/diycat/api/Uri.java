@@ -6,6 +6,7 @@ package com.koala.diycat.api;
  */
 public class Uri {
 
-//    public static final String BASE_URL = "http://baobab.kaiyanapp.com/api/v4/";
     public static final String BASE_URL = "https://api.weibo.com/2/";
+
+    public static final String PAGE = "page";
 }

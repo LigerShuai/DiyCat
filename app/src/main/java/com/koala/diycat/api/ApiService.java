@@ -1,8 +1,8 @@
 package com.koala.diycat.api;
 
-import com.koala.diycat.model.PublicTimeLine;
+import com.koala.diycat.model.statuses.TimeLine;
 
-import retrofit2.Call;
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 
 /**
@@ -18,8 +18,7 @@ public interface ApiService {
      *
      * @return
      */
-    @GET("statuses/public_timeline.json?access_token=2.00a84ggCeURfzC13e87045d2ilFJiD")
-    Call<PublicTimeLine> getHomePage();
-
+    @GET("statuses/public_timeline.json")
+    Observable<TimeLine> getPublicTimeLine();
 
 }

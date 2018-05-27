@@ -1,21 +1,22 @@
 package com.koala.diycat.main.home;
 
+import android.annotation.SuppressLint;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 
 import com.koala.diycat.api.ApiService;
 import com.koala.diycat.base.BaseRefreshFragment;
 import com.koala.diycat.main.adapter.HomeAdapter;
-import com.koala.diycat.model.PublicTimeLine;
-import com.koala.diycat.model.TestData;
+import com.koala.diycat.model.statuses.TimeLine;
 import com.koala.diycat.network.NetManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author Liger
@@ -23,12 +24,16 @@ import retrofit2.Response;
  */
 public class HomeFragment extends BaseRefreshFragment {
 
+    private List<String> mDatas;
+    private HomeAdapter mAdapter;
+
     @Override
     protected void initView() {
         super.initView();
-        HomeAdapter adapter = new HomeAdapter(getData());
+        mDatas = new ArrayList<>();
+        mAdapter = new HomeAdapter(mDatas);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
@@ -36,31 +41,54 @@ public class HomeFragment extends BaseRefreshFragment {
 
     }
 
+    @SuppressLint("CheckResult")
     @Override
     protected void initData() {
-        NetManager.getInstance().retrofit().create(ApiService.class).getHomePage()
-        .enqueue(new Callback<PublicTimeLine>() {
-            @Override
-            public void onResponse(Call<PublicTimeLine> call, Response<PublicTimeLine> response) {
-                Log.d("liger", "onResponse: " + response);
-            }
 
-            @Override
-            public void onFailure(Call<PublicTimeLine> call, Throwable t) {
-                Log.d("liger", "onFailure: ");
-            }
-        });
-    }
+        NetManager.getInstance().retrofit().create(ApiService.class).getPublicTimeLine()
+                //在 io 线程请求网络
+                .subscribeOn(Schedulers.io())
+                //回到主线程处理请求结果
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<TimeLine>() {
+                    private Disposable mDisposable;
 
-    private List<TestData> getData() {
-        List<TestData> list = new ArrayList<>();
-        TestData data;
-        for (int i = 0; i < 20; i++) {
-            data = new TestData();
-            data.setMsg("shuai" + i);
-            list.add(data);
-        }
-        return list;
+                    /**
+                     * 发送请求后调用该方法
+                     * @param d
+                     */
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        mDisposable = d;
+                    }
+
+                    /**
+                     * 发送请求成功后,调用 onNext(),onComplete()方法
+                     * @param timeLine
+                     */
+                    @Override
+                    public void onNext(TimeLine timeLine) {
+                        for (int i = 0; i < timeLine.getStatuses().size(); i++) {
+                            mDatas.add(timeLine.getStatuses().get(i).getUser().getName());
+                        }
+                        mAdapter.notifyDataSetChanged();
+                        Log.d("liger", "onNext: ");
+                    }
+
+                    /**
+                     * 发送请求失败调用该方法
+                     * @param e
+                     */
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("liger", "onError: 请求失败" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d("liger", "onComplete: 请求成功");
+                    }
+                });
     }
 
 }

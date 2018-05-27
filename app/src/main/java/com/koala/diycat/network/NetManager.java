@@ -38,6 +38,7 @@ public class NetManager {
     private OkHttpClient getClient() {
         return new OkHttpClient.Builder()
                 .addInterceptor(new LogInterceptor())
+                .addInterceptor(new TokenInterceptor())
 //            .cache(new Cache(new File("C://okhttp"), 10 * 1024 * 102))
                 .retryOnConnectionFailure(true)
                 .connectTimeout(3, TimeUnit.SECONDS)

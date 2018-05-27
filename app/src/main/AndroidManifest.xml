@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:name=".base.BaseApp"
         android:theme="@style/AppTheme">
-        <activity android:name=".login.AuthActivity">
+        <activity android:name=".main.home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".main.home.MainActivity"/>
+        <!--<activity android:name=".main.home.MainActivity"/>-->
 
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"

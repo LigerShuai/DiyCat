@@ -50,11 +50,6 @@ public class AuthActivity extends BaseActivity {
     }
 
     @Override
-    protected void initListener() {
-
-    }
-
-    @Override
     protected void initData() {
         mLoginTv.setMovementMethod(new ScrollingMovementMethod());
         mSsoHandler = new SsoHandler(AuthActivity.this);
@@ -99,6 +94,7 @@ public class AuthActivity extends BaseActivity {
 
     /**
      * 当 SSO 授权 Activity 退出时，该函数被调用。
+     *
      * @param requestCode
      * @param resultCode
      * @param data

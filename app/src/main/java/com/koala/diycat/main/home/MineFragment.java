@@ -15,11 +15,6 @@ public class MineFragment extends BaseFragment {
     }
 
     @Override
-    protected void initListener() {
-
-    }
-
-    @Override
     protected void initData() {
 
     }

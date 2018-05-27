@@ -26,7 +26,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(mRootView);
         ButterKnife.bind(this);
         initView();
-        initListener();
         initData();
     }
 
@@ -34,12 +33,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化视图
      */
     protected abstract void initView();
-
-
-    /**
-     * 初始化监听器
-     */
-    protected abstract void initListener();
 
     /**
      * 初始化数据

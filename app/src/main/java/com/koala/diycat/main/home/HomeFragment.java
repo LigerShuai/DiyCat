@@ -36,11 +36,6 @@ public class HomeFragment extends BaseRefreshFragment {
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    @Override
-    protected void initListener() {
-
-    }
-
     @SuppressLint("CheckResult")
     @Override
     protected void initData() {

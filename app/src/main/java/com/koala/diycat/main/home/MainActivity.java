@@ -51,10 +51,6 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         mViewPager.setAdapter(mAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
         setupTabView(mTabLayout);
-    }
-
-    @Override
-    protected void initListener() {
         mTabLayout.addOnTabSelectedListener(this);
     }
 

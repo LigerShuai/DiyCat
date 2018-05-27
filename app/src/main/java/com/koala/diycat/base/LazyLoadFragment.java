@@ -14,11 +14,6 @@ public class LazyLoadFragment extends BaseFragment {
     }
 
     @Override
-    protected void initListener() {
-
-    }
-
-    @Override
     protected void initData() {
 
     }

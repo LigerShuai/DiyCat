@@ -16,7 +16,7 @@ import butterknife.Unbinder;
 /**
  * @author Liger
  * @date 2018/4/28 22:37
- *
+ * <p>
  * Fragment 基类
  */
 public abstract class BaseFragment extends Fragment {
@@ -29,7 +29,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = inflater.inflate(getContentViewId(), container, false);
-        mUnbinder = ButterKnife.bind(this,mRootView);
+        mUnbinder = ButterKnife.bind(this, mRootView);
         return mRootView;
     }
 
@@ -43,7 +43,6 @@ public abstract class BaseFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
-        initListener();
     }
 
     @Override
@@ -56,11 +55,6 @@ public abstract class BaseFragment extends Fragment {
      * 初始化视图
      */
     protected abstract void initView();
-
-    /**
-     * 初始化监听器
-     */
-    protected abstract void initListener();
 
     /**
      * 初始化数据

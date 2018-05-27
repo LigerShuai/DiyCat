@@ -14,11 +14,6 @@ public class DynamicFragment extends BaseRefreshFragment {
     }
 
     @Override
-    protected void initListener() {
-
-    }
-
-    @Override
     protected void initData() {
 
     }

@@ -15,11 +15,6 @@ public class SplashActivity extends BaseActivity {
     }
 
     @Override
-    protected void initListener() {
-
-    }
-
-    @Override
     protected void initData() {
 
     }

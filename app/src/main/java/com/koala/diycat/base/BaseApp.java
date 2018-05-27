@@ -24,6 +24,10 @@ public class BaseApp extends Application {
     public void onCreate() {
         super.onCreate();
         sContext = getApplicationContext();
+        init3rdParty();
+    }
+
+    private void init3rdParty() {
         Bugly.init(getApplicationContext(), "bbd0f149c2", true);
         WbSdk.install(this, new AuthInfo(this, WeiboConstants.APP_KEY, WeiboConstants.REDIRECT_URL, WeiboConstants.SCOPE));
     }

@@ -50,9 +50,8 @@ public class HomeFragment extends BaseRefreshFragment {
     }
 
     private void getHomeTimeLine(int pageCount) {
-        final int[] count = {pageCount};
         options = new HashMap<>(1);
-        options.put(Uri.PAGE, count[0]);
+        options.put(Uri.PAGE, pageCount);
         NetManager.getInstance().retrofit().create(ApiService.class).getHomeTimeLine(options)
                 //在 io 线程请求网络
                 .subscribeOn(Schedulers.io())
@@ -76,6 +75,10 @@ public class HomeFragment extends BaseRefreshFragment {
                      */
                     @Override
                     public void onNext(TimeLine timeLine) {
+                        List<Status> statuses = timeLine.getStatuses();
+                        if (statuses == null || statuses.size() <= 0) {
+                            return;
+                        }
                         if (page == 1) {
                             mDatas.clear();
                             mDatas.addAll(timeLine.getStatuses());
@@ -86,7 +89,7 @@ public class HomeFragment extends BaseRefreshFragment {
                             mDatas.addAll(position, list);
                             mAdapter.notifyItemInserted(position);
                         }
-
+                        page++;
                     }
 
                     /**
@@ -101,8 +104,6 @@ public class HomeFragment extends BaseRefreshFragment {
                     @Override
                     public void onComplete() {
                         Log.d("liger", "onComplete: 请求成功");
-                        count[0]++;
-                        page = count[0];
                     }
                 });
     }

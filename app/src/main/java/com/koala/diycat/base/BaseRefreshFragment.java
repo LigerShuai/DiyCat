@@ -28,8 +28,9 @@ public abstract class BaseRefreshFragment extends BaseFragment implements OnRefr
     @CallSuper
     @Override
     protected void initView() {
-        mRefreshLayout.setRefreshHeader(new DropboxHeader(mContext))
-                .setPrimaryColorsId(R.color.tab_tv_color_pressed);
+        mRefreshLayout.setRefreshHeader(new DropboxHeader(mContext)).setPrimaryColorsId(R.color.tab_tv_color_pressed);
+        mRefreshLayout.setOnRefreshListener(this);
+        mRefreshLayout.setOnLoadMoreListener(this);
     }
 
 
@@ -46,6 +47,6 @@ public abstract class BaseRefreshFragment extends BaseFragment implements OnRefr
 
     @Override
     public void onLoadMore(RefreshLayout refreshLayout) {
-
+        mRefreshLayout.finishLoadMore(2000);
     }
 }

@@ -2,7 +2,6 @@ package com.koala.diycat.main.adapter;
 
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.load.DataSource;
@@ -43,13 +42,11 @@ public class HomeAdapter extends BaseQuickAdapter<Status, BaseViewHolder> {
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        Log.d("liger", "onLoadFailed: 图片加载失败");
                         return false;
                     }
 
                     @Override
                     public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        Log.d("liger", "onResourceReady: 图片加载完成");
                         return false;
                     }
                 })

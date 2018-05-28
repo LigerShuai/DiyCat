@@ -11,6 +11,7 @@ import com.koala.diycat.main.adapter.HomeAdapter;
 import com.koala.diycat.model.statuses.Status;
 import com.koala.diycat.model.statuses.TimeLine;
 import com.koala.diycat.network.NetManager;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +31,8 @@ public class HomeFragment extends BaseRefreshFragment {
 
     private List<Status> mDatas;
     private HomeAdapter mAdapter;
+    private int page = 1;
+    Map<String, Integer> options;
 
     @Override
     protected void initView() {
@@ -43,13 +46,14 @@ public class HomeFragment extends BaseRefreshFragment {
     @SuppressLint("CheckResult")
     @Override
     protected void initData() {
-        getHomeTimeLine();
+        getHomeTimeLine(page);
     }
 
-    private void getHomeTimeLine() {
-        Map<String, Integer> map = new HashMap<>(1);
-        map.put(Uri.PAGE, 2);
-        NetManager.getInstance().retrofit().create(ApiService.class).getHomeTimeLine(map)
+    private void getHomeTimeLine(int pageCount) {
+        final int[] count = {pageCount};
+        options = new HashMap<>(1);
+        options.put(Uri.PAGE, count[0]);
+        NetManager.getInstance().retrofit().create(ApiService.class).getHomeTimeLine(options)
                 //在 io 线程请求网络
                 .subscribeOn(Schedulers.io())
                 //回到主线程处理请求结果
@@ -72,9 +76,17 @@ public class HomeFragment extends BaseRefreshFragment {
                      */
                     @Override
                     public void onNext(TimeLine timeLine) {
-                        Log.d("liger", "onNext: " + timeLine);
-                        mDatas.addAll(timeLine.getStatuses());
-                        mAdapter.notifyDataSetChanged();
+                        if (page == 1) {
+                            mDatas.clear();
+                            mDatas.addAll(timeLine.getStatuses());
+                            mAdapter.notifyDataSetChanged();
+                        } else {
+                            List<Status> list = new ArrayList<>(timeLine.getStatuses());
+                            int position = mDatas.size();
+                            mDatas.addAll(position, list);
+                            mAdapter.notifyItemInserted(position);
+                        }
+
                     }
 
                     /**
@@ -89,8 +101,22 @@ public class HomeFragment extends BaseRefreshFragment {
                     @Override
                     public void onComplete() {
                         Log.d("liger", "onComplete: 请求成功");
+                        count[0]++;
+                        page = count[0];
                     }
                 });
     }
 
+    @Override
+    public void onRefresh(RefreshLayout refreshLayout) {
+        super.onRefresh(refreshLayout);
+        page = 1;
+        getHomeTimeLine(page);
+    }
+
+    @Override
+    public void onLoadMore(RefreshLayout refreshLayout) {
+        super.onLoadMore(refreshLayout);
+        getHomeTimeLine(page);
+    }
 }

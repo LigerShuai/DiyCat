@@ -20,7 +20,7 @@ public class TokenInterceptor implements Interceptor {
         Request originalRequest = chain.request();
         HttpUrl originalHttpUrl = originalRequest.url();
 
-//        Log.d("liger", "intercept: " + AccessTokenKeeper.readAccessToken(BaseApp.getContext()).getToken());
+//        Logger.d("intercept: " + AccessTokenKeeper.readAccessToken(BaseApp.getContext()).getToken());
         String token = "2.00a84ggCeURfzC13e87045d2ilFJiD";
         HttpUrl url = originalHttpUrl.newBuilder()
 //                .addQueryParameter("access_token", AccessTokenKeeper.readAccessToken(BaseApp.getContext()).getToken())

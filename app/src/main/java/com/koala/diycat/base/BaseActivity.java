@@ -22,6 +22,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         mRootView = LayoutInflater.from(this).inflate(getContentViewId(), null);
         setContentView(mRootView);
         ButterKnife.bind(this);

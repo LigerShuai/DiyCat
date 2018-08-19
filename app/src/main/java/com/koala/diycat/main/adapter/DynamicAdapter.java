@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +19,7 @@ import com.koala.diycat.R;
 import com.koala.diycat.model.statuses.Status;
 import com.koala.diycat.utils.glide.GlideApp;
 import com.koala.diycat.utils.glide.GlideRoundTransform;
+import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -87,7 +87,7 @@ public class DynamicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     })
                     .into(myViewHolder.userIv);
         } else if (holder instanceof EndHolder) {
-            Log.d("liger", "onBindViewHolder: EndHolder");
+            Logger.d("onBindViewHolder: EndHolder");
         }
     }
 
@@ -98,12 +98,12 @@ public class DynamicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemViewType(int position) {
-        Log.d("liger", "getItemViewType: position = " + position);
+        Logger.d("getItemViewType: position = " + position);
         if (position == mList.size()) {
-            Log.d("liger", "getItemViewType: TYPE_END = " + TYPE_END);
+            Logger.d("getItemViewType: TYPE_END = " + TYPE_END);
             return TYPE_END;
         } else {
-            Log.d("liger", "getItemViewType: TYPE_NORMAL = " + TYPE_NORMAL);
+            Logger.d("getItemViewType: TYPE_NORMAL = " + TYPE_NORMAL);
             return TYPE_NORMAL;
         }
     }

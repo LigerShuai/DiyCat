@@ -2,7 +2,6 @@ package com.koala.diycat.main.home;
 
 import android.annotation.SuppressLint;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 
 import com.koala.diycat.api.ApiService;
 import com.koala.diycat.api.Uri;
@@ -11,6 +10,7 @@ import com.koala.diycat.main.adapter.DynamicAdapter;
 import com.koala.diycat.model.statuses.Status;
 import com.koala.diycat.model.statuses.TimeLine;
 import com.koala.diycat.network.NetManager;
+import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 import java.util.ArrayList;
@@ -98,12 +98,12 @@ public class DynamicFragment extends BaseRefreshFragment {
                      */
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("liger", "onError: 请求失败" + e.getMessage());
+                        Logger.d("请求失败" + e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-                        Log.d("liger", "onComplete: 请求成功");
+                        Logger.d("请求成功");
                     }
                 });
     }

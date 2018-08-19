@@ -1,6 +1,6 @@
 package com.koala.diycat.network;
 
-import android.util.Log;
+import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
 
@@ -47,7 +47,7 @@ public class LogInterceptor implements Interceptor {
         //因为response.body().string()之后，response中的流会被关闭，程序会报错，我们需要创建出一
         //个新的response给应用层处理
         ResponseBody responseBody = response.peekBody(1024 * 1024);
-        Log.i("shuai", response.request().url() + responseBody.string());
+        Logger.i(response.request().url() + responseBody.string());
         return response;
     }
 }

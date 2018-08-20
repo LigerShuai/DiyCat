@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.util.Log;
 
+import com.blankj.utilcode.util.Utils;
 import com.koala.diycat.constants.WeiboConstants;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
@@ -35,6 +36,7 @@ public class BaseApp extends Application {
         initLogger();
         Bugly.init(getApplicationContext(), "bbd0f149c2", true);
         WbSdk.install(this, new AuthInfo(this, WeiboConstants.APP_KEY, WeiboConstants.REDIRECT_URL, WeiboConstants.SCOPE));
+        Utils.init(this);
     }
 
     private void initLogger() {

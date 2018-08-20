@@ -12,6 +12,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.koala.diycat.R;
 import com.koala.diycat.model.statuses.Status;
+import com.koala.diycat.utils.TimeHelper;
 import com.koala.diycat.utils.glide.GlideApp;
 import com.koala.diycat.utils.glide.GlideRoundTransform;
 
@@ -30,9 +31,8 @@ public class HomeAdapter extends BaseQuickAdapter<Status, BaseViewHolder> {
     @Override
     protected void convert(BaseViewHolder helper, Status item) {
         helper.setText(R.id.timeline_head_name_tv, item.getUser().getName());
-        helper.setText(R.id.timeline_head_time_tv, "20小时前");
-//            helper.setText(R.id.timeline_head_time_tv, item.getCreatedAt());
-//            helper.setText(R.id.timeline_head_source_tv, item.getSource());
+        helper.setText(R.id.timeline_head_time_tv, TimeHelper.getCreateTime(item.getCreatedAt()));
+//        helper.setText(R.id.timeline_head_source_tv, item.getSource());
         helper.setText(R.id.item_timeline_content_tv, item.getText());
 
         GlideApp.with(mContext)

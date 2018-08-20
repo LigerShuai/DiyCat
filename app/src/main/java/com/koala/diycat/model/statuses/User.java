@@ -65,92 +65,148 @@ public class User {
      * vclub_member : 0
      */
 
-    private long id;
-    private String idstr;
-    @SerializedName("class")
-    private int classX;
-    private String screen_name;
+    @SerializedName("id")
+    private long userId;
+
+    @SerializedName("idstr")
+    private String userIdStr;
+
+    //用户昵称
+    @SerializedName("screen_name")
+    private String nickName;
+
+    //友好显示名称
+    @SerializedName("name")
     private String name;
+
     private String province;
     private String city;
+    //用户所在地
     private String location;
+    //用户个人描述
     private String description;
-    private String url;
-    private String profile_image_url;
+
+    //用户博客地址
+    @SerializedName("url")
+    private String blogUrl;
+
+    //用户头像地址（中图），50×50像素
+    @SerializedName("profile_image_url")
+    private String avatarSmallUrl;
+
+    //用户头像地址（大图），180×180像素
+    @SerializedName("avatar_large")
+    private String avatarLargeUrl;
+
+    //用户头像地址（高清）
+    @SerializedName("avatar_hd")
+    private String avatarHdUrl;
+
+    //用户的微博统一URL地址
+    @SerializedName("profile_url")
+    private String profileUrl;
+
+    @SerializedName("cover_image_phone")
     private String cover_image_phone;
-    private String profile_url;
+
+    //没有时不返回
+    @SerializedName("cover_image")
+    private String cover_image;
+
+    //用户的个性化域名
     private String domain;
+    //用户的微号
     private String weihao;
+    //性别，m：男、f：女、n：未知
     private String gender;
-    private int followers_count;
-    private int friends_count;
+
+    //粉丝数
+    @SerializedName("followers_count")
+    private int followers;
+
+    //关注数
+    @SerializedName("friends_count")
+    private int friends;
+
+    @SerializedName("pagefriends_count")
     private int pagefriends_count;
+
+    @SerializedName("statuses_count")
     private int statuses_count;
-    private int favourites_count;
-    private String created_at;
+
+    //收藏数
+    @SerializedName("favourites_count")
+    private int favourites;
+
+    //用户创建（注册）时间
+    @SerializedName("created_at")
+    private String registerTime;
+
+    //本人是否关注
     private boolean following;
-    private boolean allow_all_act_msg;
-    private boolean geo_enabled;
-    private boolean verified;
-    private int verified_type;
+
+    //是否允许所有人给我发私信
+    @SerializedName("allow_all_act_msg")
+    private boolean allowSecretMsg;
+
+    //是否允许标识用户的地理位置
+    @SerializedName("geo_enabled")
+    private boolean geoEnabled;
+
+    //是否是微博认证用户，即加V用户
+    @SerializedName("verified")
+    private boolean isVerified;
+
+    @SerializedName("verified_type")
+    private int verifiedType;
+
+    //用户备注信息，只有在查询用户关系时才返回此字段
     private String remark;
-    private Insecurity insecurity;
-    private int ptype;
-    private boolean allow_all_comment;
-    private String avatar_large;
-    private String avatar_hd;
+
+    //是否允许所有人对我的微博进行评论
+    @SerializedName("allow_all_comment")
+    private boolean allowComment;
+
+    //认证原因
+    @SerializedName("verified_reason")
     private String verified_reason;
-    private String verified_trade;
-    private String verified_reason_url;
-    private String verified_source;
-    private String verified_source_url;
-    private boolean follow_me;
-    private boolean like;
-    private boolean like_me;
-    private int online_status;
-    private int bi_followers_count;
+
+    @SerializedName("follow_me")
+    private boolean isFollowMe;
+
+    //用户的在线状态，0：不在线、1：在线
+    @SerializedName("online_status")
+    private int onlineStatus;
+
+    //用户的互粉数
+    @SerializedName("bi_followers_count")
+    private int mutualFollowers;
+
+    //用户当前的语言版本，zh-cn：简体中文，zh-tw：繁体中文，en：英语
     private String lang;
-    private int star;
-    private int mbtype;
-    private int mbrank;
-    private int block_word;
-    private int block_app;
-    private int credit_score;
-    private int user_ability;
-    private int urank;
-    private int story_read_state;
-    private int vclub_member;
 
-    public long getId() {
-        return id;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
-    public String getIdstr() {
-        return idstr;
+    public String getUserIdStr() {
+        return userIdStr;
     }
 
-    public void setIdstr(String idstr) {
-        this.idstr = idstr;
+    public void setUserIdStr(String userIdStr) {
+        this.userIdStr = userIdStr;
     }
 
-    public int getClassX() {
-        return classX;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setClassX(int classX) {
-        this.classX = classX;
-    }
-
-    public String getScreen_name() {
-        return screen_name;
-    }
-
-    public void setScreen_name(String screen_name) {
-        this.screen_name = screen_name;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public String getName() {
@@ -193,20 +249,44 @@ public class User {
         this.description = description;
     }
 
-    public String getUrl() {
-        return url;
+    public String getBlogUrl() {
+        return blogUrl;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setBlogUrl(String blogUrl) {
+        this.blogUrl = blogUrl;
     }
 
-    public String getProfile_image_url() {
-        return profile_image_url;
+    public String getAvatarSmallUrl() {
+        return avatarSmallUrl;
     }
 
-    public void setProfile_image_url(String profile_image_url) {
-        this.profile_image_url = profile_image_url;
+    public void setAvatarSmallUrl(String avatarSmallUrl) {
+        this.avatarSmallUrl = avatarSmallUrl;
+    }
+
+    public String getAvatarLargeUrl() {
+        return avatarLargeUrl;
+    }
+
+    public void setAvatarLargeUrl(String avatarLargeUrl) {
+        this.avatarLargeUrl = avatarLargeUrl;
+    }
+
+    public String getAvatarHdUrl() {
+        return avatarHdUrl;
+    }
+
+    public void setAvatarHdUrl(String avatarHdUrl) {
+        this.avatarHdUrl = avatarHdUrl;
+    }
+
+    public String getProfileUrl() {
+        return profileUrl;
+    }
+
+    public void setProfileUrl(String profileUrl) {
+        this.profileUrl = profileUrl;
     }
 
     public String getCover_image_phone() {
@@ -217,12 +297,12 @@ public class User {
         this.cover_image_phone = cover_image_phone;
     }
 
-    public String getProfile_url() {
-        return profile_url;
+    public String getCover_image() {
+        return cover_image;
     }
 
-    public void setProfile_url(String profile_url) {
-        this.profile_url = profile_url;
+    public void setCover_image(String cover_image) {
+        this.cover_image = cover_image;
     }
 
     public String getDomain() {
@@ -249,20 +329,20 @@ public class User {
         this.gender = gender;
     }
 
-    public int getFollowers_count() {
-        return followers_count;
+    public int getFollowers() {
+        return followers;
     }
 
-    public void setFollowers_count(int followers_count) {
-        this.followers_count = followers_count;
+    public void setFollowers(int followers) {
+        this.followers = followers;
     }
 
-    public int getFriends_count() {
-        return friends_count;
+    public int getFriends() {
+        return friends;
     }
 
-    public void setFriends_count(int friends_count) {
-        this.friends_count = friends_count;
+    public void setFriends(int friends) {
+        this.friends = friends;
     }
 
     public int getPagefriends_count() {
@@ -281,20 +361,20 @@ public class User {
         this.statuses_count = statuses_count;
     }
 
-    public int getFavourites_count() {
-        return favourites_count;
+    public int getFavourites() {
+        return favourites;
     }
 
-    public void setFavourites_count(int favourites_count) {
-        this.favourites_count = favourites_count;
+    public void setFavourites(int favourites) {
+        this.favourites = favourites;
     }
 
-    public String getCreated_at() {
-        return created_at;
+    public String getRegisterTime() {
+        return registerTime;
     }
 
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+    public void setRegisterTime(String registerTime) {
+        this.registerTime = registerTime;
     }
 
     public boolean isFollowing() {
@@ -305,36 +385,36 @@ public class User {
         this.following = following;
     }
 
-    public boolean isAllow_all_act_msg() {
-        return allow_all_act_msg;
+    public boolean isAllowSecretMsg() {
+        return allowSecretMsg;
     }
 
-    public void setAllow_all_act_msg(boolean allow_all_act_msg) {
-        this.allow_all_act_msg = allow_all_act_msg;
+    public void setAllowSecretMsg(boolean allowSecretMsg) {
+        this.allowSecretMsg = allowSecretMsg;
     }
 
-    public boolean isGeo_enabled() {
-        return geo_enabled;
+    public boolean isGeoEnabled() {
+        return geoEnabled;
     }
 
-    public void setGeo_enabled(boolean geo_enabled) {
-        this.geo_enabled = geo_enabled;
+    public void setGeoEnabled(boolean geoEnabled) {
+        this.geoEnabled = geoEnabled;
     }
 
     public boolean isVerified() {
-        return verified;
+        return isVerified;
     }
 
     public void setVerified(boolean verified) {
-        this.verified = verified;
+        isVerified = verified;
     }
 
-    public int getVerified_type() {
-        return verified_type;
+    public int getVerifiedType() {
+        return verifiedType;
     }
 
-    public void setVerified_type(int verified_type) {
-        this.verified_type = verified_type;
+    public void setVerifiedType(int verifiedType) {
+        this.verifiedType = verifiedType;
     }
 
     public String getRemark() {
@@ -345,44 +425,12 @@ public class User {
         this.remark = remark;
     }
 
-    public Insecurity getInsecurity() {
-        return insecurity;
+    public boolean isAllowComment() {
+        return allowComment;
     }
 
-    public void setInsecurity(Insecurity insecurity) {
-        this.insecurity = insecurity;
-    }
-
-    public int getPtype() {
-        return ptype;
-    }
-
-    public void setPtype(int ptype) {
-        this.ptype = ptype;
-    }
-
-    public boolean isAllow_all_comment() {
-        return allow_all_comment;
-    }
-
-    public void setAllow_all_comment(boolean allow_all_comment) {
-        this.allow_all_comment = allow_all_comment;
-    }
-
-    public String getAvatar_large() {
-        return avatar_large;
-    }
-
-    public void setAvatar_large(String avatar_large) {
-        this.avatar_large = avatar_large;
-    }
-
-    public String getAvatar_hd() {
-        return avatar_hd;
-    }
-
-    public void setAvatar_hd(String avatar_hd) {
-        this.avatar_hd = avatar_hd;
+    public void setAllowComment(boolean allowComment) {
+        this.allowComment = allowComment;
     }
 
     public String getVerified_reason() {
@@ -393,76 +441,28 @@ public class User {
         this.verified_reason = verified_reason;
     }
 
-    public String getVerified_trade() {
-        return verified_trade;
+    public boolean isFollowMe() {
+        return isFollowMe;
     }
 
-    public void setVerified_trade(String verified_trade) {
-        this.verified_trade = verified_trade;
+    public void setFollowMe(boolean followMe) {
+        isFollowMe = followMe;
     }
 
-    public String getVerified_reason_url() {
-        return verified_reason_url;
+    public int getOnlineStatus() {
+        return onlineStatus;
     }
 
-    public void setVerified_reason_url(String verified_reason_url) {
-        this.verified_reason_url = verified_reason_url;
+    public void setOnlineStatus(int onlineStatus) {
+        this.onlineStatus = onlineStatus;
     }
 
-    public String getVerified_source() {
-        return verified_source;
+    public int getMutualFollowers() {
+        return mutualFollowers;
     }
 
-    public void setVerified_source(String verified_source) {
-        this.verified_source = verified_source;
-    }
-
-    public String getVerified_source_url() {
-        return verified_source_url;
-    }
-
-    public void setVerified_source_url(String verified_source_url) {
-        this.verified_source_url = verified_source_url;
-    }
-
-    public boolean isFollow_me() {
-        return follow_me;
-    }
-
-    public void setFollow_me(boolean follow_me) {
-        this.follow_me = follow_me;
-    }
-
-    public boolean isLike() {
-        return like;
-    }
-
-    public void setLike(boolean like) {
-        this.like = like;
-    }
-
-    public boolean isLike_me() {
-        return like_me;
-    }
-
-    public void setLike_me(boolean like_me) {
-        this.like_me = like_me;
-    }
-
-    public int getOnline_status() {
-        return online_status;
-    }
-
-    public void setOnline_status(int online_status) {
-        this.online_status = online_status;
-    }
-
-    public int getBi_followers_count() {
-        return bi_followers_count;
-    }
-
-    public void setBi_followers_count(int bi_followers_count) {
-        this.bi_followers_count = bi_followers_count;
+    public void setMutualFollowers(int mutualFollowers) {
+        this.mutualFollowers = mutualFollowers;
     }
 
     public String getLang() {
@@ -471,101 +471,5 @@ public class User {
 
     public void setLang(String lang) {
         this.lang = lang;
-    }
-
-    public int getStar() {
-        return star;
-    }
-
-    public void setStar(int star) {
-        this.star = star;
-    }
-
-    public int getMbtype() {
-        return mbtype;
-    }
-
-    public void setMbtype(int mbtype) {
-        this.mbtype = mbtype;
-    }
-
-    public int getMbrank() {
-        return mbrank;
-    }
-
-    public void setMbrank(int mbrank) {
-        this.mbrank = mbrank;
-    }
-
-    public int getBlock_word() {
-        return block_word;
-    }
-
-    public void setBlock_word(int block_word) {
-        this.block_word = block_word;
-    }
-
-    public int getBlock_app() {
-        return block_app;
-    }
-
-    public void setBlock_app(int block_app) {
-        this.block_app = block_app;
-    }
-
-    public int getCredit_score() {
-        return credit_score;
-    }
-
-    public void setCredit_score(int credit_score) {
-        this.credit_score = credit_score;
-    }
-
-    public int getUser_ability() {
-        return user_ability;
-    }
-
-    public void setUser_ability(int user_ability) {
-        this.user_ability = user_ability;
-    }
-
-    public int getUrank() {
-        return urank;
-    }
-
-    public void setUrank(int urank) {
-        this.urank = urank;
-    }
-
-    public int getStory_read_state() {
-        return story_read_state;
-    }
-
-    public void setStory_read_state(int story_read_state) {
-        this.story_read_state = story_read_state;
-    }
-
-    public int getVclub_member() {
-        return vclub_member;
-    }
-
-    public void setVclub_member(int vclub_member) {
-        this.vclub_member = vclub_member;
-    }
-
-    public static class Insecurity {
-        /**
-         * sexual_content : false
-         */
-
-        private boolean sexual_content;
-
-        public boolean isSexual_content() {
-            return sexual_content;
-        }
-
-        public void setSexual_content(boolean sexual_content) {
-            this.sexual_content = sexual_content;
-        }
     }
 }

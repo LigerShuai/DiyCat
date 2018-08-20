@@ -71,7 +71,7 @@ public class DynamicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             myViewHolder.contentTv.setText(status.getText());
 
             GlideApp.with(mContext)
-                    .load(status.getUser().getProfile_image_url())
+                    .load(status.getUser().getAvatarSmallUrl())
                     .centerCrop()
                     .transform(new GlideRoundTransform(25))
                     .listener(new RequestListener<Drawable>() {

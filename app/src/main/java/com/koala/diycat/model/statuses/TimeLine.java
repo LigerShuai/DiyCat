@@ -1,43 +1,34 @@
 package com.koala.diycat.model.statuses;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
- *  Weibo 时间线
+ * Weibo 时间线
  *
  * @author Liger
  * @date 2018/5/27 18:05
  */
 public class TimeLine {
-    private boolean hasvisible;
-    private int previousCursor;
-    private int nextCursor;
+
+    @SerializedName("hasvisible")
+    private boolean hasVisible;
+
+    @SerializedName("total_number")
     private int totalNumber;
+
+    @SerializedName("interval")
     private int interval;
+
     private List<Status> statuses;
 
-    public boolean isHasvisible() {
-        return hasvisible;
+    public boolean isHasVisible() {
+        return hasVisible;
     }
 
-    public void setHasvisible(boolean hasvisible) {
-        this.hasvisible = hasvisible;
-    }
-
-    public int getPreviousCursor() {
-        return previousCursor;
-    }
-
-    public void setPreviousCursor(int previousCursor) {
-        this.previousCursor = previousCursor;
-    }
-
-    public int getNextCursor() {
-        return nextCursor;
-    }
-
-    public void setNextCursor(int nextCursor) {
-        this.nextCursor = nextCursor;
+    public void setHasVisible(boolean hasVisible) {
+        this.hasVisible = hasVisible;
     }
 
     public int getTotalNumber() {

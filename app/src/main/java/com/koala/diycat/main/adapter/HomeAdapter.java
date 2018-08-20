@@ -36,7 +36,7 @@ public class HomeAdapter extends BaseQuickAdapter<Status, BaseViewHolder> {
         helper.setText(R.id.item_timeline_content_tv, item.getText());
 
         GlideApp.with(mContext)
-                .load(item.getUser().getProfile_image_url())
+                .load(item.getUser().getAvatarSmallUrl())
                 .centerCrop()
                 .transform(new GlideRoundTransform(25))
                 .listener(new RequestListener<Drawable>() {

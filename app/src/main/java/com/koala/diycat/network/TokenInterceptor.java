@@ -1,5 +1,9 @@
 package com.koala.diycat.network;
 
+import com.koala.diycat.base.BaseApp;
+import com.orhanobut.logger.Logger;
+import com.sina.weibo.sdk.auth.AccessTokenKeeper;
+
 import java.io.IOException;
 
 import okhttp3.HttpUrl;
@@ -20,17 +24,15 @@ public class TokenInterceptor implements Interceptor {
         Request originalRequest = chain.request();
         HttpUrl originalHttpUrl = originalRequest.url();
 
-//        Logger.d("intercept: " + AccessTokenKeeper.readAccessToken(BaseApp.getContext()).getToken());
-        String token = "2.00a84ggCeURfzC13e87045d2ilFJiD";
         HttpUrl url = originalHttpUrl.newBuilder()
-//                .addQueryParameter("access_token", AccessTokenKeeper.readAccessToken(BaseApp.getContext()).getToken())
-                .addQueryParameter("access_token", token)
+                .addQueryParameter("access_token", AccessTokenKeeper.readAccessToken(BaseApp.getContext()).getToken())
                 .build();
         Request request = originalRequest.newBuilder()
                 .url(url)
                 .method(originalRequest.method(), originalRequest.body())
                 .build();
 
+        Logger.d("intercept: " + AccessTokenKeeper.readAccessToken(BaseApp.getContext()).getToken());
         return chain.proceed(request);
     }
 }

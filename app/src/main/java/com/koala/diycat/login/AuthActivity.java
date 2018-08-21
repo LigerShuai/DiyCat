@@ -3,6 +3,7 @@ package com.koala.diycat.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,6 +57,9 @@ public class AuthActivity extends BaseActivity {
         // 从 SharedPreferences 中读取上次已保存好 AccessToken 等信息，
         // 第一次启动本应用，AccessToken 不可用
         mAccessToken = AccessTokenKeeper.readAccessToken(this);
+        if (!TextUtils.isEmpty(mAccessToken.getToken())) {
+            startActivity(new Intent(AuthActivity.this, MainActivity.class));
+        }
     }
 
     @Override

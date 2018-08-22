@@ -6,3 +6,6 @@
 /build
 /captures
 .externalNativeBuild
+/output
+/keystore
+/signing.properties

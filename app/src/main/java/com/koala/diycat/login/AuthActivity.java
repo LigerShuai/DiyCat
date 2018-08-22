@@ -59,6 +59,7 @@ public class AuthActivity extends BaseActivity {
         mAccessToken = AccessTokenKeeper.readAccessToken(this);
         if (!TextUtils.isEmpty(mAccessToken.getToken())) {
             startActivity(new Intent(AuthActivity.this, MainActivity.class));
+            finish();
         }
     }
 

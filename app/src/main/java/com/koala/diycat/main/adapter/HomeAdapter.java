@@ -15,6 +15,7 @@ import com.koala.diycat.model.statuses.Status;
 import com.koala.diycat.utils.TimeHelper;
 import com.koala.diycat.utils.glide.GlideApp;
 import com.koala.diycat.utils.glide.GlideRoundTransform;
+import com.orhanobut.logger.Logger;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -37,9 +38,12 @@ public class HomeAdapter extends BaseQuickAdapter<Status, BaseViewHolder> {
         helper.setText(R.id.timeline_head_time_tv, TimeHelper.getCreateTime(item.getCreatedAt()));
         helper.setText(R.id.item_timeline_content_tv, item.getText());
 
+        String text = "";
         Document document = Jsoup.parse(item.getSource());
-        String text = document.body().child(0).html();
-        helper.setText(R.id.timeline_head_source_tv, text);
+        if (document.body().childNodeSize() > 0) {
+            text = document.body().child(0).html();
+        }
+        helper.setText(R.id.timeline_head_source_tv, String.format(mContext.getResources().getString(R.string.home_fragment_weibo_source), text));
 
         GlideApp.with(mContext)
                 .load(item.getUser().getAvatarSmallUrl())

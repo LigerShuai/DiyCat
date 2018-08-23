@@ -3,7 +3,6 @@ package com.koala.diycat.utils;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.Spannable;
-import android.util.Log;
 
 
 import com.koala.diycat.model.Emoji;
@@ -32,20 +31,18 @@ public class StringUtils {
      */
     public static Spannable getEmojiSpan(Context context, Spannable text, int bound) {
         Matcher matcher = mEmojiPattern.matcher(text);
-        Log.d("shuai", "getEmojiSpan: " + text + " " + matcher.find());
-        while (matcher.find()) {
+        if (matcher.find()) {
             // 获取匹配到的具体字符
             String key = matcher.group();
             // 匹配字符串的开始位置
             int start = matcher.start();
             Drawable drawable = Emoji.text2Emoji(context, key, bound);
             if (drawable == null) {
-                break;
+                return text;
             }
             EmojiSpan emojiSpan = new EmojiSpan(drawable);
             text.setSpan(emojiSpan, start, start + key.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
-            Log.d("shuai2", text + "");
-            return text;
+            Logger.d("emoji find " + text);
         }
         return text;
     }

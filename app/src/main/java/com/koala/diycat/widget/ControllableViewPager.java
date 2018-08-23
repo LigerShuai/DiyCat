@@ -1,4 +1,4 @@
-package com.koala.diycat.widget.view;
+package com.koala.diycat.widget;
 
 /**
  * @author Liger

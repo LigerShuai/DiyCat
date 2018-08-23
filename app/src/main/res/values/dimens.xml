@@ -2,10 +2,10 @@
 <resources>
 
     <!-- fragment_home_rv_item_timeline_head -->
-    <dimen name="item_timeline_head_h">100dp</dimen>
-    <dimen name="item_timeline_head_name_size">16sp</dimen>
+    <dimen name="item_timeline_head_h">70dp</dimen>
+    <dimen name="item_timeline_head_name_size">12sp</dimen>
 
     <!-- item_timeline -->
-    <dimen name="item_timeline_padding">20dp</dimen>
-    <dimen name="item_timeline_content_size">20sp</dimen>
+    <dimen name="item_timeline_padding">10dp</dimen>
+    <dimen name="item_timeline_content_size">16sp</dimen>
 </resources>

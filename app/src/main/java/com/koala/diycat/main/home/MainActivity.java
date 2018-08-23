@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.koala.diycat.R;
 import com.koala.diycat.base.BaseActivity;
 import com.koala.diycat.main.adapter.ViewPagerAdapter;
-import com.koala.diycat.widget.view.ControllableViewPager;
+import com.koala.diycat.widget.ControllableViewPager;
 
 import java.util.ArrayList;
 import java.util.List;

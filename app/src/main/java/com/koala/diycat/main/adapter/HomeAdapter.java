@@ -2,8 +2,12 @@ package com.koala.diycat.main.adapter;
 
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
+import com.blankj.utilcode.util.ConvertUtils;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
@@ -12,10 +16,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.koala.diycat.R;
 import com.koala.diycat.model.statuses.Status;
+import com.koala.diycat.utils.StringUtils;
 import com.koala.diycat.utils.TimeHelper;
 import com.koala.diycat.utils.glide.GlideApp;
 import com.koala.diycat.utils.glide.GlideRoundTransform;
-import com.orhanobut.logger.Logger;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -36,14 +40,18 @@ public class HomeAdapter extends BaseQuickAdapter<Status, BaseViewHolder> {
     protected void convert(BaseViewHolder helper, Status item) {
         helper.setText(R.id.timeline_head_name_tv, item.getUser().getName());
         helper.setText(R.id.timeline_head_time_tv, TimeHelper.getCreateTime(item.getCreatedAt()));
-        helper.setText(R.id.item_timeline_content_tv, item.getText());
 
         String text = "";
         Document document = Jsoup.parse(item.getSource());
         if (document.body().childNodeSize() > 0) {
             text = document.body().child(0).html();
         }
-        helper.setText(R.id.timeline_head_source_tv, String.format(mContext.getResources().getString(R.string.home_fragment_weibo_source), text));
+        if (!TextUtils.isEmpty(text)) {
+            helper.setText(R.id.timeline_head_source_tv, String.format(mContext.getResources().getString(R.string.home_fragment_weibo_source), text));
+        }
+
+        Spannable emojiSpan = StringUtils.getEmojiSpan(mContext, new SpannableString(item.getText()), ConvertUtils.dp2px(20));
+        helper.setText(R.id.item_timeline_content_tv, emojiSpan);
 
         GlideApp.with(mContext)
                 .load(item.getUser().getAvatarSmallUrl())

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".main.home.MainActivity">
 
-    <com.koala.diycat.widget.view.ControllableViewPager
+    <com.koala.diycat.widget.ControllableViewPager
         android:id="@+id/activity_main_vp"
         android:layout_width="match_parent"
         android:layout_height="0dp"

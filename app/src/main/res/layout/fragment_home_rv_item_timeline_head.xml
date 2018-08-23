@@ -25,7 +25,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="name"
             android:textSize="@dimen/item_timeline_head_name_size" />
 
         <TextView
@@ -33,7 +32,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/timeline_head_name_tv"
-            android:text="21小时前"
             android:textSize="@dimen/item_timeline_head_name_size" />
 
         <TextView
@@ -43,7 +41,6 @@
             android:layout_below="@+id/timeline_head_name_tv"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/timeline_head_time_tv"
-            android:text="来自 iPhone客户端"
             android:textSize="@dimen/item_timeline_head_name_size" />
 
     </RelativeLayout>
